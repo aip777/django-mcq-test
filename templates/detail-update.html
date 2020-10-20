@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class='row'>
+<div class='col-sm-6 col-sm-offset-3'>
+
+<div>
+    <table>
+      <tr>
+        <th>ID Number</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+      </tr>
+      <tr>
+          <td>{{form.instance.id_number}}</td>
+        <td>{{ form.instance.first_name }} <small> {{ form.instance.last_name }}</small></td>
+        <td>{{ form.instance.email }}</td>
+        <td>{{ form.instance.phone }}</td>
+      </tr>
+</table>
+
+
+</div>
+
+<hr/>
+
+<div class="update" style="text-align: center">
+    <h3>Make Changes</h3>
+{% include 'update-form.html' with form=form %}
+</div>
+
+</div>
+</div>
+{% endblock %}

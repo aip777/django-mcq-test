@@ -1,0 +1,60 @@
+{% extends 'base.html'%}
+{% block content %}
+<div class="student">
+ <h1>Students Information</h1>
+    <h4>
+        <a class="btn btn-sm btn-danger" href="create"><span class="fa fa-trash"></span>&nbsp;Student Registration</a>
+    </h4>
+
+<!--    <form action="{% url 'search' %}" method='get'>-->
+<!--      <input type='text' name='q' value='{{ request.GET.q }}'>-->
+<!--      <input class="button" type='submit' value="Search Profile">-->
+<!--    </form>-->
+
+<!--    <form action="{% url 'search' %}" method="get">-->
+<!--      <input name="q" type="text" placeholder="Search...">-->
+<!--    </form>-->
+</div>
+<div class="text-center">
+    <a href="/questionlist"><p>Start Exam</p></a>
+</div>
+<table>
+
+  <tr>
+    <th>ID</th>
+    <th>Department</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone Number</th>
+    <th>Father Name</th>
+    <th>Mother Name</th>
+    <th>Guidance Phone</th>
+    <th>CGPA</th>
+    <th>Delete</th>
+    <th>Edit</th>
+  </tr>
+  {% for obj in qs %}
+  <tr>
+
+    <td>{{obj.id_number}}</td>
+    <td>{{obj.department}}</td>
+    <td>{{obj.first_name}} {{obj.last_name}}</td>
+    <td>{{obj.email}}</td>
+    <td>{{obj.phone}}</td>
+    <td>{{obj.father_name}}</td>
+    <td>{{obj.mother_name}}</td>
+    <td>{{obj.guidancephone}}</td>
+    <td>{{obj.cgpa}}</td>
+
+
+   <td>
+    <a class="btn btn-sm btn-danger" href="delete/{{ obj.id }}"><span class="fa fa-trash"></span>&nbsp;Delete</a>
+   </td>
+   <td>
+    <a class="btn btn-sm btn-danger" href="update/{{ obj.id }}"><span class="fa fa-trash"></span>&nbsp;Edit</a>
+   </td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}

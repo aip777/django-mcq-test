@@ -1,0 +1,45 @@
+{% extends 'base.html'%}
+{% block content %}
+<div class="register" style="text-align: center">
+    {% if form.errors.non_field_errors %}
+{{ form.errors.non_field_errors }}
+{% endif %}
+<form method='post'> {% csrf_token %}
+<!--    {{ form.as_p }}-->
+
+  <label for="idnumber">Id Number:</label><br>
+  <input type="text" id="idnumber" name="id_number" value="{{form.instance.id_number}}"><br><br>
+
+  <label for="departments">Department:</label><br>
+  <input type="text" id="departments" name="department" value="{{ form.instance.department }}"><br><br>
+
+  <label for="fname">First name:</label><br>
+  <input type="text" id="fname" name="first_name" value="{{form.instance.first_name}}"><br>
+
+  <label for="lname">Last name:</label><br>
+  <input type="text" id="lname" name="last_name" value="{{form.instance.last_name}}"><br><br>
+
+    <label for="email">Email:</label><br>
+  <input type="text" id="email" name="email" value="{{form.instance.email}}"><br><br>
+
+    <label for="phone">Phone Number:</label><br>
+  <input type="text" id="phone" name="phone" value="{{form.instance.phone}}"><br><br>
+
+
+    <label for="father_name">Father Name:</label><br>
+  <input type="text" id="father_name" name="father_name" value="{{form.instance.father_name}}"><br><br>
+
+    <label for="mother_name">Mother Name:</label><br>
+  <input type="text" id="mother_name" name="mother_name" value="{{form.instance.mother_name}}"><br><br>
+
+  <label for="guidancephone">Guidance Phone:</label><br>
+  <input type="text" id="guidancephone" name="guidancephone" value="{{form.instance.guidancephone}}"><br><br>
+
+    <label for="cgpa">CGPA:</label><br>
+  <input type="text" id="cgpa" name="cgpa" value="{{form.instance.cgpa}}"><br><br>
+
+  <button type='submit'>Save</button>
+</form>
+</div>
+
+{% endblock %}

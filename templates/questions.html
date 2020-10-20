@@ -1,0 +1,119 @@
+{% extends 'base.html'%}
+
+
+
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<title>Python Quiz</title>
+
+
+
+</head>
+
+<body>
+ {% block content %}
+	<div id="page-wrap">
+		<h1>Final Quiz </h1>
+        <div class="timer">
+            <time id="countdown">Exam Time: 15:00</time>
+		<form action="" method='POST' id="quiz">
+             {% csrf_token %}
+
+            <ol>
+                {% for exam in examqs %}
+
+
+                <li>
+
+                    <h3>{{ exam.question_title }}</h3>
+
+                    <div>
+<!--                        <input type="radio" name="question_1" id="question-1-answers-A" value="A" />-->
+                        <input type="radio" name="question_{{exam.id}}" id="question-1-answers-A" value="A" />
+                        <label for="question-1-answers-A">{{ exam.mcq_1 }}</label>
+                    </div>
+
+                    <div>
+<!--                        <input type="radio" name="question_1" id="question-1-answers-B" value="B" />-->
+                        <input type="radio" name="question_{{exam.id}}" id="question-1-answers-B" value="B" />
+                        <label for="question-1-answers-B">{{ exam.mcq_2 }}</label>
+                    </div>
+
+                    <div>
+<!--                        <input type="radio" name="question_1" id="question-1-answers-C" value="C" />-->
+                        <input type="radio" name="question_{{exam.id}}" id="question-1-answers-C" value="C" />
+                        <label for="question-1-answers-C">{{ exam.mcq_3 }}</label>
+                    </div>
+
+                    <div>
+<!--                        <input type="radio" name="question_1" id="question-1-answers-D" value="D" />-->
+                        <input type="radio" name="question_{{exam.id}}" id="question-1-answers-D" value="D" />
+                        <label for="question-1-answers-D">{{ exam.mcq_4 }}</label>
+                    </div>
+
+                     <div>
+<!--                        <input type="radio" name="question_1" id="question-1-answers-E" value="E" />-->
+                        <input type="radio" name="question_{{exam.id}}" id="question-1-answers-E" value="E" />
+                        <label for="question-1-answers-E">{{ exam.mcq_5 }}</label>
+                    </div>
+                </li>
+            {% endfor %}
+            </ol>
+
+            <input type="submit" value="Submit Quiz" />
+
+		</form>
+
+	</div>
+ </div>
+    {% endblock %}
+	<script type="text/javascript">
+	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+	<script type="text/javascript">
+	var pageTracker = _gat._getTracker("UA-68528-29");
+	pageTracker._initData();
+	pageTracker._trackPageview();
+	</script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script>
+         var seconds = 900;
+            function secondPassed() {
+                var minutes = Math.round((seconds - 30)/60),
+              remainingSeconds = seconds % 60;
+
+          if (remainingSeconds < 10) {
+              remainingSeconds = "0" + remainingSeconds;
+          }
+
+          document.getElementById('countdown').innerHTML ='Exam Time:'+ minutes + ":" + remainingSeconds;
+          if (seconds == 0) {
+              clearInterval(countdownTimer);
+             //form1 is your form name
+            document.form1.submit();
+          } else {
+              seconds--;
+          }
+      }
+      var countdownTimer = setInterval('secondPassed()', 1000);
+
+
+     </script>
+<script>
+  let form = ... // there are many easy ways to get this element
+form.addEventListener("submit", evt => {
+  // don't actually submit this form to its associated URL:
+  evt.preventDefault();
+  // and schedule the timeout
+  setTimeout(myFunction, 15000);
+});
+</script>
+
+</body>
+
+</html>

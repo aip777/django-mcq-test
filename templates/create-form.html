@@ -1,0 +1,47 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+<div class="register" style="text-align: center">
+<h1>Registration Form</h1>
+    {% if form.errors.non_field_errors %}
+{{ form.errors.non_field_errors }}
+{% endif %}
+<form action="{% url 'create' %}" method='POST'> {% csrf_token %}
+<!--    {{ form.as_p }}-->
+
+  <label>Id Number:</label><br>
+  <input type="number"  name="id_number"><br><br>
+
+  <label>Department:</label><br>
+  <input type="text" name="department"><br><br>
+
+  <label>First name:</label><br>
+  <input type="text" name="first_name"><br>
+
+  <label>Last name:</label><br>
+  <input type="text" name="last_name"><br><br>
+
+    <label>Email:</label><br>
+  <input type="text" name="email"><br><br>
+
+    <label>Phone Number:</label><br>
+  <input type="text" name="phone"><br><br>
+
+    <label>Father Name:</label><br>
+  <input type="text" name="father_name"><br><br>
+
+    <label>Mother Name:</label><br>
+  <input type="text" name="mother_name"><br><br>
+
+  <label>Guidance Phone:</label><br>
+  <input type="text" name="guidancephone"><br><br>
+
+    <label>CGPA:</label><br>
+  <input type="text" name="cgpa"><br><br>
+
+  <button type='submit'>Save</button>
+</form>
+</div>
+
+ {% endblock %}

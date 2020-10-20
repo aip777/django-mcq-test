@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<table>
+
+
+<h3 style="text-align:center;">Result Sheet</h3>
+  <tr>
+    <th>ID</th>
+    <th>Question 1</th>
+    <th>Question 2</th>
+    <th>Question 3</th>
+    <th>Question 4</th>
+    <th>Question 5</th>
+
+  </tr>
+  {% for obj in qs %}
+
+  <tr>
+    <td> {{obj.id}}</td>
+    {% if obj.question_1 == "B" %}
+    <td> Correct answer</td>
+    {% else %}
+        <td> Wrong answer</td>
+      {% endif %}
+
+    {% if obj.question_2 == "A" %}
+    <td> Correct answer</td>
+    {% else %}
+        <td> Wrong answer</td>
+      {% endif %}
+
+    {% if obj.question_3 == "C" %}
+    <td> Correct answer</td>
+    {% else %}
+        <td> Wrong answer</td>
+      {% endif %}
+
+
+    {% if obj.question_4 == "D" %}
+    <td> Correct answer</td>
+    {% else %}
+        <td> Wrong answer</td>
+      {% endif %}
+
+
+    {% if obj.question_5 == "D" %}
+    <td> Correct answer</td>
+    {% else %}
+        <td> Wrong answer</td>
+      {% endif %}
+
+
+  </tr>
+  {% endfor %}
+</table>
+
+<p>
+    {% for restult in question_1_resutl %}
+        <p>{restult.question_1}</p>
+    {% endfor %}
+</p>
+{% endblock %}
+
